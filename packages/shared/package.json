@@ -1,0 +1,30 @@
+{
+  "name": "@hei-blog/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "跨端共享的 TS 类型与常量",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
+  }
+}

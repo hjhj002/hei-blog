@@ -1,0 +1,31 @@
+{
+  "name": "hei-blog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "个人博客 monorepo：Nest 后端 + React 前台 + Vue 后台管理",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "pnpm build:shared && concurrently -k -n api,web,admin -c blue,green,magenta \"pnpm dev:api\" \"pnpm dev:web\" \"pnpm dev:admin\"",
+    "dev:api": "pnpm --filter @hei-blog/api start:dev",
+    "dev:web": "pnpm --filter @hei-blog/web dev",
+    "dev:admin": "pnpm --filter @hei-blog/admin dev",
+    "build": "pnpm build:shared && pnpm --filter @hei-blog/api build && pnpm --filter @hei-blog/web build && pnpm --filter @hei-blog/admin build",
+    "build:shared": "pnpm --filter @hei-blog/shared build",
+    "dev:shared": "pnpm --filter @hei-blog/shared dev",
+    "lint": "pnpm --filter @hei-blog/api lint",
+    "format": "prettier --write \"**/*.{ts,tsx,vue,json,md,prisma,yaml,yml}\"",
+    "typecheck": "pnpm --filter @hei-blog/shared typecheck && pnpm --filter @hei-blog/api typecheck && pnpm --filter @hei-blog/web typecheck && pnpm --filter @hei-blog/admin typecheck",
+    "db:generate": "pnpm --filter @hei-blog/api prisma:generate",
+    "db:migrate": "pnpm --filter @hei-blog/api prisma:migrate",
+    "db:push": "pnpm --filter @hei-blog/api prisma:push",
+    "db:seed": "pnpm --filter @hei-blog/api prisma:seed",
+    "db:studio": "pnpm --filter @hei-blog/api prisma:studio"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prettier": "^3.4.2"
+  }
+}

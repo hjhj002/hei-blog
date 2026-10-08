@@ -1,0 +1,17 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #1f2328;
+}
+
+button {
+  margin-right: 6px;
+}
