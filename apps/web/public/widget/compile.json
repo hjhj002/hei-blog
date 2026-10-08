@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "video": "source/cowcat-headturn-2k.mp4",
+    "width": 1440,
+    "height": 1440,
+    "frames": 158
+  },
+  "compile": {
+    "backgroundOwner": "page",
+    "delivery": "alpha-video",
+    "framePolicy": "native",
+    "fps": 60.0,
+    "rawFrameCount": 158,
+    "finalFrameCount": 391,
+    "duration": 6.517,
+    "framePolicy": "interpolate",
+    "cleanup": "loop",
+    "alpha": true,
+    "note": "3D 奶牛猫按帧抠图得到真实 Alpha，VP9 WebM 保留透明通道。"
+  },
+  "runtime": {
+    "type": "alpha-video",
+    "frameCount": 391,
+    "fps": 60.0,
+    "keying": null,
+    "posterFrame": 0,
+    "assets": {
+      "poster": "poster.png",
+      "desktop": "desktop.webm",
+      "mobile": "mobile.webm",
+      "timeline": "timeline.json"
+    }
+  },
+  "outputs": {
+    "poster": {
+      "path": "/Users/bwg/Desktop/dist/final/poster.png",
+      "alpha": true,
+      "sourceFrame": 0
+    },
+    "desktop": {
+      "path": "/Users/bwg/Desktop/dist/final/desktop.webm",
+      "width": 1000,
+      "height": 1000,
+      "alpha": true,
+      "codec": "vp9-alpha"
+    },
+    "mobile": {
+      "path": "/Users/bwg/Desktop/dist/final/mobile.webm",
+      "width": 500,
+      "height": 500,
+      "alpha": true,
+      "codec": "vp9-alpha"
+    }
+  }
+}

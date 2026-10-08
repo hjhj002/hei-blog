@@ -1,0 +1,26 @@
+.kitten-widget {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.kitten-widget .kitten-source {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.kitten-widget .kitten-poster {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.kitten-widget .kitten-poster {
+  object-fit: contain;
+}
