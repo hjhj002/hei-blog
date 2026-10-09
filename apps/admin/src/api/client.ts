@@ -30,3 +30,11 @@ export function updatePost(id: string, payload: Record<string, unknown>) {
 export function deletePost(id: string) {
   return http.delete(`/admin/posts/${id}`);
 }
+
+export function uploadImage(file: File) {
+  const formData = new FormData();
+  formData.append('file', file);
+  return http
+    .post<{ url: string }>('/uploads', formData)
+    .then((response) => response.data.url);
+}

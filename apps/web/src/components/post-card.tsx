@@ -16,9 +16,18 @@ export function PostCard({ post, index }: PostCardProps) {
     <article className="group flex flex-col overflow-hidden rounded-[18px] border bg-card shadow-[0_8px_22px_-16px_rgba(58,40,96,0.42)] transition-all hover:-translate-y-[3px] hover:shadow-[0_18px_40px_-24px_rgba(58,40,96,0.38)]">
       <Link
         to={`/posts/${post.slug}`}
-        className={`${cover} cover-glow relative block aspect-[16/10]`}
+        className="relative block aspect-[16/10] overflow-hidden"
       >
-        <span className="absolute bottom-3.5 left-3.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-foreground dark:bg-[#13101c]/70 dark:text-foreground">
+        {post.coverImage ? (
+          <img
+            src={post.coverImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <div className={`${cover} cover-glow absolute inset-0`} />
+        )}
+        <span className="absolute bottom-3.5 left-3.5 z-10 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-foreground dark:bg-[#13101c]/70 dark:text-foreground">
           {post.tags[0]?.name ?? '随笔'}
         </span>
       </Link>

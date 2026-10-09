@@ -57,7 +57,7 @@
 | 应用 | 包目录 | 技术 |
 | :--- | :--- | :--- |
 | 后端 API | `apps/api` | NestJS 11 + Prisma 6 + PostgreSQL |
-| 博客前台 | `apps/web` | React 19 + Vite 6 + React Router 6 + Tailwind CSS 3 |
+| 博客前台 | `apps/web` | React 19 + Vite 6 + React Router 6 + alova 3 + Tailwind CSS 3 |
 | 后台管理 | `apps/admin` | Vue 3.5 + Vite 6 + Vue Router 4 + Pinia 2 |
 | 共享包 | `packages/shared` | TypeScript + tsup（CJS / ESM 双产物） |
 
@@ -180,14 +180,46 @@ PORT=3000
 
 # PostgreSQL 连接串
 DATABASE_URL="postgresql://用户名:密码@localhost:5432/hei_blog?schema=public"
+
+# MinIO 对象存储
+MINIO_ENDPOINT=localhost
+MINIO_PORT=9010
+MINIO_USE_SSL=false
+MINIO_ACCESS_KEY=hei-blog
+MINIO_SECRET_KEY=hei-blog123
+MINIO_BUCKET=hei-blog
 ```
 
 | 变量 | 默认值 | 说明 |
 | :--- | :--- | :--- |
 | `PORT` | `3000` | 后端监听端口 |
 | `DATABASE_URL` | — | Prisma 使用的 PostgreSQL 连接串 |
+| `MINIO_ENDPOINT` | `localhost` | MinIO 服务地址 |
+| `MINIO_PORT` | `9010` | MinIO API 端口 |
+| `MINIO_ACCESS_KEY` | `hei-blog` | MinIO 访问密钥 |
+| `MINIO_SECRET_KEY` | `hei-blog123` | MinIO 密钥 |
+| `MINIO_BUCKET` | `hei-blog` | 存储桶名称 |
 
 > `.env` 已在 `.gitignore` 中忽略，请勿提交真实凭据。
+
+## 图片存储（MinIO）
+
+文章封面等图片存储在 MinIO（S3 兼容对象存储）。后端启动时会自动创建 `hei-blog` 桶并设为公开读。
+
+本地用 Docker 起一个独立 MinIO（与 `medical-minio` 互不冲突，端口 9010/9011）：
+
+```bash
+docker run -d --name hei-blog-minio \
+  -p 9010:9000 -p 9011:9001 \
+  -e MINIO_ROOT_USER=hei-blog \
+  -e MINIO_ROOT_PASSWORD=hei-blog123 \
+  -v hei_blog_minio_data:/data \
+  minio/minio server /data --console-address ":9001"
+```
+
+- API：`http://localhost:9010`，控制台：`http://localhost:9011`
+- 上传接口：`POST /api/uploads`（`multipart/form-data`，字段名 `file`），返回 `{ "url": "..." }`
+- 后台管理「新建/编辑文章」里的封面图上传即调用该接口，返回的 URL 写入文章 `coverImage` 字段
 
 ---
 

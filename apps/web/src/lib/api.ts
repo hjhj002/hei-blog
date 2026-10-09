@@ -1,9 +1,5 @@
-import axios from 'axios';
-import type { PaginatedResult, Post, Tag } from '@hei-blog/shared';
-
-export const http = axios.create({
-  baseURL: '/api',
-});
+import type { PaginatedResult, Post, Project, Tag } from '@hei-blog/shared';
+import { alova } from './alova';
 
 export interface ListPostsParams {
   page?: number;
@@ -12,19 +8,18 @@ export interface ListPostsParams {
   q?: string;
 }
 
-export async function listPosts(
-  params: ListPostsParams = {},
-) {
-  const { data } = await http.get<PaginatedResult<Post>>('/posts', { params });
-  return data;
+export function getPosts(params: ListPostsParams = {}) {
+  return alova.Get<PaginatedResult<Post>>('/posts', { params });
 }
 
-export async function getPost(slug: string) {
-  const { data } = await http.get<Post>(`/posts/${slug}`);
-  return data;
+export function getPost(slug: string) {
+  return alova.Get<Post>(`/posts/${slug}`);
 }
 
-export async function listTags() {
-  const { data } = await http.get<Tag[]>('/tags');
-  return data;
+export function getTags() {
+  return alova.Get<Tag[]>('/tags');
+}
+
+export function getProjects() {
+  return alova.Get<Project[]>('/projects');
 }

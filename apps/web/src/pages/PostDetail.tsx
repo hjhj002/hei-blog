@@ -1,23 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useRequest } from 'alova/client';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import type { Post } from '@hei-blog/shared';
 import { getPost } from '@/lib/api';
 import { formatDate, readingTime } from '@/lib/format';
 import { Badge } from '@/components/ui/badge';
 
 export default function PostDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<Post | null>(null);
-  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    if (slug) {
-      getPost(slug)
-        .then(setPost)
-        .catch(() => setError(true));
-    }
-  }, [slug]);
+  const { data: post, loading, error } = useRequest(
+    () => getPost(slug ?? ''),
+    { immediate: true },
+  );
 
   if (error) {
     return (
@@ -33,7 +27,7 @@ export default function PostDetail() {
     );
   }
 
-  if (!post) {
+  if (loading || !post) {
     return (
       <main className="mx-auto w-full max-w-[760px] px-6 py-16 text-muted-foreground">
         加载中…

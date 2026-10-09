@@ -30,6 +30,11 @@ export class CreatePostDto implements CreatePostInput {
   @IsString()
   content!: string;
 
+  @ApiPropertyOptional({ description: '封面图片 URL（来自 MinIO）' })
+  @IsOptional()
+  @IsString()
+  coverImage?: string | null;
+
   @ApiPropertyOptional({ default: false })
   @IsOptional()
   @IsBoolean()

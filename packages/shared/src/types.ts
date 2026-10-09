@@ -10,6 +10,7 @@ export interface Post {
   slug: string;
   excerpt: string | null;
   content: string;
+  coverImage: string | null;
   published: boolean;
   viewCount: number;
   createdAt: string;
@@ -22,6 +23,7 @@ export interface CreatePostInput {
   slug: string;
   excerpt?: string | null;
   content: string;
+  coverImage?: string | null;
   published?: boolean;
   tags?: string[];
 }
@@ -31,6 +33,7 @@ export interface UpdatePostInput {
   slug?: string;
   excerpt?: string | null;
   content?: string;
+  coverImage?: string | null;
   published?: boolean;
   tags?: string[];
 }
@@ -48,4 +51,20 @@ export interface PaginatedResult<T> {
   total: number;
   page: number;
   pageSize: number;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  content: string | null;
+  url: string | null;
+  repo: string | null;
+  coverImage: string | null;
+  tech: string[];
+  featured: boolean;
+  sort: number;
+  createdAt: string;
+  updatedAt: string;
 }

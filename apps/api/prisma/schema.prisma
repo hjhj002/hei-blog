@@ -14,6 +14,7 @@ model Post {
   slug      String   @unique
   excerpt   String?
   content   String
+  coverImage String?
   published Boolean  @default(false)
   viewCount Int      @default(0)
   createdAt DateTime @default(now())
@@ -26,4 +27,20 @@ model Tag {
   name  String @unique
   slug  String @unique
   posts Post[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  content     String?
+  url         String?
+  repo        String?
+  coverImage  String?
+  tech        String[]
+  featured    Boolean  @default(false)
+  sort        Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

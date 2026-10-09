@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import type { Post, Tag } from '@hei-blog/shared';
-import { listPosts, listTags } from '@/lib/api';
+import { useState } from 'react';
+import { useRequest, useWatcher } from 'alova/client';
+import { getPosts, getTags } from '@/lib/api';
 import { formatDate } from '@/lib/format';
 import { Masthead } from '@/components/masthead';
 import { FeaturedPost } from '@/components/featured-post';
@@ -12,40 +12,19 @@ import { Button } from '@/components/ui/button';
 const PAGE_SIZE = 6;
 
 export default function Home() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [total, setTotal] = useState(0);
-  const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let active = true;
-    listTags().then((data) => {
-      if (active) setTags(data);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
+  const { data: tags = [] } = useRequest(() => getTags());
 
-  useEffect(() => {
-    let active = true;
-    setLoading(true);
-    listPosts({ pageSize, tag: selectedTag ?? undefined })
-      .then((data) => {
-        if (!active) return;
-        setPosts(data.items);
-        setTotal(data.total);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
-    return () => {
-      active = false;
-    };
-  }, [selectedTag, pageSize]);
+  const { data: postsData, loading } = useWatcher(
+    () => getPosts({ pageSize, tag: selectedTag ?? undefined }),
+    [selectedTag, pageSize],
+    { immediate: true },
+  );
 
+  const posts = postsData?.items ?? [];
+  const total = postsData?.total ?? 0;
   const featured = posts[0];
   const grid = posts.slice(1);
   const lastUpdated = featured ? formatDate(featured.updatedAt) : '—';

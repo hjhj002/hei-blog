@@ -33,9 +33,9 @@ export function SiteNav() {
           <a href="/#latest" className={linkClass}>
             文章
           </a>
-          <a href="#" className={linkClass}>
+          <Link to="/projects" className={linkClass}>
             项目
-          </a>
+          </Link>
           <a href="#" className={linkClass}>
             关于
           </a>

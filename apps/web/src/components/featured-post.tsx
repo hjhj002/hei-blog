@@ -42,8 +42,17 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
           阅读全文 →
         </Link>
       </div>
-      <div className="cover-1 cover-glow relative m-4 min-h-[240px] rounded-[18px] md:min-h-[340px]">
-        <span className="absolute bottom-3.5 left-3.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-foreground dark:bg-[#13101c]/70 dark:text-foreground">
+      <div className="relative m-4 min-h-[240px] overflow-hidden rounded-[18px] md:min-h-[340px]">
+        {post.coverImage ? (
+          <img
+            src={post.coverImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <div className="cover-1 cover-glow absolute inset-0" />
+        )}
+        <span className="absolute bottom-3.5 left-3.5 z-10 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-foreground dark:bg-[#13101c]/70 dark:text-foreground">
           {post.tags[0]?.name ?? '随笔'}
         </span>
       </div>

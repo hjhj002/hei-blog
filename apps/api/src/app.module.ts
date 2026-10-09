@@ -6,6 +6,10 @@ import { PrismaModule } from './prisma/prisma.module';
 import { HealthModule } from './health/health.module';
 import { PostsModule } from './posts/posts.module';
 import { TagsModule } from './tags/tags.module';
+import { AiModule } from './ai/ai.module';
+import { MinioModule } from './minio/minio.module';
+import { UploadModule } from './upload/upload.module';
+import { ProjectsModule } from './projects/projects.module';
 
 @Module({
   imports: [
@@ -14,6 +18,10 @@ import { TagsModule } from './tags/tags.module';
     HealthModule,
     PostsModule,
     TagsModule,
+    AiModule,
+    MinioModule,
+    UploadModule,
+    ProjectsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
