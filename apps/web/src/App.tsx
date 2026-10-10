@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/site-footer';
 import Home from './pages/Home';
 import PostDetail from './pages/PostDetail';
 import Projects from './pages/Projects';
+import About from './pages/About';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/posts/:slug" element={<PostDetail />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <SiteFooter />
     </div>

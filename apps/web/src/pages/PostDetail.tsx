@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { getPost } from '@/lib/api';
 import { formatDate, readingTime } from '@/lib/format';
 import { Badge } from '@/components/ui/badge';
+import { Markdown } from '@/components/markdown';
 
 export default function PostDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -57,8 +58,8 @@ export default function PostDetail() {
           </Badge>
         ))}
       </div>
-      <article className="mt-8 whitespace-pre-wrap text-[17px] leading-relaxed">
-        {post.content}
+      <article className="markdown mt-8">
+        <Markdown>{post.content}</Markdown>
       </article>
     </main>
   );

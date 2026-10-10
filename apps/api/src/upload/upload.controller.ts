@@ -20,7 +20,7 @@ export class UploadController {
   constructor(private readonly minioService: MinioService) {}
 
   @Post()
-  @ApiOperation({ summary: '上传图片到 MinIO' })
+  @ApiOperation({ summary: '上传文件到 MinIO（图片或附件）' })
   @ApiConsumes('multipart/form-data')
   @ApiBody({
     schema: {
@@ -32,13 +32,7 @@ export class UploadController {
   })
   @UseInterceptors(
     FileInterceptor('file', {
-      limits: { fileSize: 10 * 1024 * 1024 },
-      fileFilter: (_req, file, callback) => {
-        if (!file.mimetype.startsWith('image/')) {
-          return callback(new BadRequestException('只支持上传图片'), false);
-        }
-        callback(null, true);
-      },
+      limits: { fileSize: 20 * 1024 * 1024 },
     }),
   )
   async upload(@UploadedFile() file?: Express.Multer.File) {

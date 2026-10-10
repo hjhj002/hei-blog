@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from './theme-toggle';
+import { BrandLogo } from './brand-logo';
 
 export function SiteNav() {
   const linkClass = 'rounded-full px-3.5 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:bg-card hover:text-foreground';
@@ -12,12 +13,8 @@ export function SiteNav() {
     <header className="sticky top-0 z-20 border-b bg-background/80 backdrop-blur-md backdrop-saturate-150">
       <div className="mx-auto flex h-[70px] w-full max-w-[1160px] items-center gap-7 px-6">
         <Link to="/" className="flex items-center gap-2.5 font-extrabold">
-          <img
-            src="/assets/cat-mascot.png"
-            alt=""
-            className="h-9 w-9 object-contain"
-          />
-          <span className="text-lg tracking-tight">奶油笔记</span>
+          <BrandLogo className="h-9 w-9 text-lg" />
+          <span className="text-lg tracking-tight">慢写</span>
         </Link>
 
         <nav className="ml-2 hidden items-center gap-1.5 md:flex">
@@ -36,9 +33,9 @@ export function SiteNav() {
           <Link to="/projects" className={linkClass}>
             项目
           </Link>
-          <a href="#" className={linkClass}>
+          <Link to="/about" className={linkClass}>
             关于
-          </a>
+          </Link>
         </nav>
 
         <div className="ml-auto flex items-center gap-2.5">

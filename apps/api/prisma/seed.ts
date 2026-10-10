@@ -88,7 +88,7 @@ const posts = [
     slug: 'hello-blog',
     excerpt: '第一篇测试文章，用来验证前后端链路是否打通。',
     content:
-      '这里是奶油笔记。\n\n以后我会在这里记录做产品、做设计、写代码时的思考与踩坑。不定期更新，尽量写得有用。',
+      '# 你好，博客\n\n这里是慢写——把想到的东西慢慢写下来。\n\n## 我会写些什么\n\n- 做产品的思考\n- 做设计的过程\n- 写代码时的踩坑\n\n## 一段代码\n\n```ts\nconst site = "慢写"\nconsole.log("你好，" + site)\n```\n\n> 不定期更新，尽量写得有用。',
     published: true,
     createdAt: new Date('2026-08-01T09:00:00+08:00'),
     tags: ['essays', 'design'],
@@ -97,8 +97,8 @@ const posts = [
 
 const projects = [
   {
-    name: '奶油笔记',
-    slug: 'cream-notes',
+    name: '慢写',
+    slug: 'mansie',
     description:
       '你现在看到的这个博客：NestJS + React + Vue 的 monorepo，带深色模式和滚动叙事刊头。',
     content:

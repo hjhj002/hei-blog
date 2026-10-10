@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { PaginatedResult, Post } from '@hei-blog/shared';
+import type { PaginatedResult, Post, Tag } from '@hei-blog/shared';
 
 export const http = axios.create({ baseURL: '/api' });
 
@@ -37,4 +37,8 @@ export function uploadImage(file: File) {
   return http
     .post<{ url: string }>('/uploads', formData)
     .then((response) => response.data.url);
+}
+
+export function listTags() {
+  return http.get<Tag[]>('/tags').then((response) => response.data);
 }

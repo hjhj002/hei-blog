@@ -1,15 +1,13 @@
+import { BrandLogo } from './brand-logo';
+
 export function SiteFooter() {
   return (
     <footer className="mt-7 border-t bg-muted/40">
       <div className="mx-auto grid w-full max-w-[1160px] gap-6 px-6 py-10 md:grid-cols-[1.6fr_1fr_1fr]">
         <div className="flex gap-3.5">
-          <img
-            src="/assets/cat-mascot.png"
-            alt=""
-            className="h-12 w-12 object-contain"
-          />
+          <BrandLogo className="h-12 w-12 text-2xl" />
           <div>
-            <div className="text-[17px] font-extrabold">奶油笔记</div>
+            <div className="text-[17px] font-extrabold">慢写</div>
             <p className="mt-1 text-sm text-muted-foreground">
               写作、设计与一点点前端。
             </p>
@@ -29,7 +27,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t">
         <div className="mx-auto w-full max-w-[1160px] px-6 py-4 text-[13px] text-muted-foreground">
-          © 2026 奶油笔记 · 用 React 与 shadcn/ui 重写
+          © 2026 慢写 · 用 React 与 shadcn/ui 重写
         </div>
       </div>
     </footer>

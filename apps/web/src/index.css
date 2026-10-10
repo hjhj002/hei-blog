@@ -123,3 +123,190 @@
     display: inline-block;
   }
 }
+
+/* ---------- Markdown 渲染 ---------- */
+.markdown {
+  font-size: 17px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.markdown > :first-child {
+  margin-top: 0;
+}
+
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin: 1.5em 0 0.6em;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.markdown h1 {
+  font-size: 1.8em;
+}
+
+.markdown h2 {
+  font-size: 1.5em;
+}
+
+.markdown h3 {
+  font-size: 1.25em;
+}
+
+.markdown h4 {
+  font-size: 1.1em;
+}
+
+.markdown p {
+  margin: 0.8em 0;
+}
+
+.markdown a {
+  color: hsl(var(--accent-foreground));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0.8em 0;
+  padding-left: 1.6em;
+}
+
+.markdown li {
+  margin: 0.35em 0;
+}
+
+.markdown li::marker {
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown blockquote {
+  margin: 1em 0;
+  padding: 0.2em 0 0.2em 1em;
+  border-left: 3px solid hsl(var(--accent-foreground));
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown code {
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: hsl(var(--secondary));
+  color: hsl(var(--accent-foreground));
+  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    monospace;
+}
+
+.markdown pre {
+  margin: 1em 0;
+  padding: 1em 1.1em;
+  border-radius: 12px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--secondary));
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+.markdown pre code.hljs {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.9em;
+}
+
+.markdown img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.markdown hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid hsl(var(--border));
+}
+
+.markdown table {
+  width: 100%;
+  margin: 1em 0;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+.markdown th,
+.markdown td {
+  padding: 8px 12px;
+  border: 1px solid hsl(var(--border));
+  text-align: left;
+}
+
+.markdown th {
+  background: hsl(var(--secondary));
+}
+
+/* 深色模式代码块 */
+.dark .markdown pre {
+  background: #0d1117;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .markdown pre code.hljs {
+  color: #c9d1d9;
+}
+
+.dark .markdown code:not(pre code) {
+  background: rgba(169, 139, 255, 0.16);
+  color: #c2a9ff;
+}
+
+.dark .hljs-comment,
+.dark .hljs-quote {
+  color: #8b949e;
+}
+
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-doctag,
+.dark .hljs-tag,
+.dark .hljs-built_in {
+  color: #ff7b72;
+}
+
+.dark .hljs-string,
+.dark .hljs-regexp,
+.dark .hljs-addition,
+.dark .hljs-title,
+.dark .hljs-section,
+.dark .hljs-name {
+  color: #a5d6ff;
+}
+
+.dark .hljs-number,
+.dark .hljs-literal,
+.dark .hljs-type,
+.dark .hljs-symbol,
+.dark .hljs-bullet,
+.dark .hljs-meta,
+.dark .hljs-link {
+  color: #79c0ff;
+}
+
+.dark .hljs-attr,
+.dark .hljs-variable,
+.dark .hljs-template-variable {
+  color: #ffa657;
+}
+
+.dark .hljs-deletion {
+  color: #ffdcd7;
+}

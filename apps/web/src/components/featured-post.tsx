@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import type { Post } from '@hei-blog/shared';
 import { Badge } from '@/components/ui/badge';
 import { formatDate, readingTime } from '@/lib/format';
+import { BrandLogo } from './brand-logo';
 
 interface FeaturedPostProps {
   post: Post;
@@ -24,12 +25,8 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
           {post.excerpt}
         </p>
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-sm text-muted-foreground">
-          <img
-            src="/assets/cat-mascot.png"
-            alt=""
-            className="h-[26px] w-[26px] rounded-full bg-secondary object-contain"
-          />
-          <span>奶油笔记</span>
+          <BrandLogo className="h-[26px] w-[26px] rounded-[8px] text-sm" />
+          <span>慢写</span>
           <span className="dot" />
           <span>{formatDate(post.createdAt)}</span>
           <span className="dot" />
